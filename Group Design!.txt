@@ -1,0 +1,108 @@
+﻿Design Document: Image Processing 
+By: Joe Forest, Pietrina Spencer
+
+
+
+
+Data:
+Given File: A text file made with 5 unique characters. The file will be an unknown size, but will be rectangular.
+
+
+User Choice:
+The user will be shown a menu where they can choose the following options:  [1] Load a new image, [2] Display current image, [3] Edit current image, [4] Exit program. Loading an image should attempt to read the information of an image from the provided file name. Choosing to edit the image will take the user to another menu where they will be prompted with the following options: [1] Crop, [2] Dim, [3] Brighten, [4] Rotate image 90 degrees. “Crop image” will ask user for 4 coordinates where they would like to crop. Choosing “Dim” will subtract one brightness value from the original value from the file and display the image on the screen. “Brighten” will add one brightness value to the original value from the file. “Rotate” will. Choosing one of these options will end with their edited photo being printed on the screen. After editing the user will be asked if they would like to save the new image to a file, If the user agrees they will be asked for the file name. Once saved they will be returned to the first menu.
+
+
+Variables:
+        
+
+
+Functions:
+
+
+main()
+        Data: Calling functions for reading and editing images.
+
+
+crop()
+Parameters: int 2D array fileName*
+        ReturnedOutput: 2D Array of Integer Values where the values are between 0 and 4
+Functionality: User will be asked what file they would like to pull the image from and then will be pulled to be printed into the program.
+
+
+ConvertChar()
+Input Parameters: int 2D array fileName*
+Returned Output: char convert char 2D array
+Functionality: will convert numbers from file to corresponding display character
+
+
+
+
+
+
+
+
+ConvertInter()
+            Input Parameters: char new 2D array fileName*
+Returned Output: int convert inter 2D array fileName*
+Functionality: Converts new image into brightness values to be saved into a file.
+
+
+
+
+dim()
+Input Parameters: int 2D array fileName*
+Returned Output: int dimmed 2d array (All values -1 brightness)
+Functionality: Will subtract one brightness value from the original values from the file.
+
+
+brighten()
+        Input Parameters: int 2D array fileName*
+Returned Output: int brighten 2D array(All values +1 brightness)
+Functionality:  Will add one brightness value to the original from the file.
+
+
+
+
+
+
+
+
+rotate()
+        Not Sure Yet.
+
+
+
+
+
+
+
+
+pickFile()
+        Parameters: int 2D array fileName*
+        ReturnedOutput: 2D Array of Integer Values where the values are between 0 and 4
+Functionality: User will be asked what file they would like to pull the image from and then will be pulled to be printed into the program.
+
+
+
+
+
+
+2DImageArray
+3
+	4
+	0
+	1
+	
+
+2DConvertedArray
+2
+	3
+	-1
+	0
+	
+
+
+
+2DFinalArray
+o
+	O
