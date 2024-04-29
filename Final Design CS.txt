@@ -1,0 +1,78 @@
+﻿Final Project Design
+Pietrina Spencer
+Erinstagram
+
+
+Data
+Int 2D Array - cropped, dim, bright, rotate, convert inter
+Char 2D Array - convert char
+File Pointer - image file
+Menu choice - int
+Edit choice - int
+
+
+Game Play
+The user will be shown a menu where they can choose the following options:  [1] Load a new image, [2] Display current image, [3] Edit current image, [4] Exit program. Loading an image should attempt to read the information of an image from the provided file name. Choosing to edit the image will take the user to another menu where they will be prompted the following options: [1] Crop, [2] Dim, [3] Brighten, [4] Rotate image 90 degrees. “Crop image” will ask user for 4 coordinates where they would like to crop. Choosing “Dim” will subtract one brightness value from the original value from the file and display the image on the screen. “Brighten” will add one brightness value to the original value from the file. “Rotate” will. Choosing one of these options will end with their edited photo being printed on the screen. After editing the user will be asked if they would like to save the new image to a file, If the user agrees they will be asked for the file name. Once saved they will be returned to the first menu.
+
+
+Functions
+main()
+        Data: Calling functions for reading and editing images.
+MainMenu()
+Input Parameters: None
+Returned Output: None
+Functionality: Display Menu
+
+
+EditMenu()
+Input Parameters: None
+Returned Output: None
+Functionality: Display editing menu 
+
+
+Save()
+        Input Parameters: int converted 2D array fileName*
+Returned Output: None
+Functionality: Writes converted values to a provided file.
+
+
+Read()
+        Input Parameters: fileName*, 
+Returned Output: none
+Functionality: will read the image from the file 
+
+
+ConvertChar()
+Input Parameters: int 2D array fileName*
+Returned Output: char convert char 2D array
+Functionality: will convert numbers from file to corresponding display character
+
+
+ConvertInter()
+        Input Parameters: char new 2D array fileName*
+Returned Output: int convert inter 2D array fileName*
+Functionality: Coverts new image into brightness values to be saved into a file.
+
+
+Crop()
+Input Parameters: int 2D array fileName*, 
+Returned Output: int cropped 2D array
+Functionality: Asks and takes users 4 coordinated and crops between those coordinates 
+
+
+Dim()
+Input Parameters: int 2D array fileName*
+Returned Output: int dimed 2d array
+Functionality: Will subtract one brightness value from the original values from the file.
+
+
+Bright()
+        Input Parameters: int 2D array fileName*
+Returned Output: int bright 2D array
+Functionality: will add one brightness value to the original values from the file. 
+
+
+Rotate()
+        Input Parameters: int 2D array fileName*
+Returned Output: int rotated 2d array 
+Functionality: Will rotate the file values by
