@@ -1,0 +1,31 @@
+﻿Design Document
+Joe Forest
+Image Processing 
+
+
+Data
+Field – 2D array of int (unknown size)
+
+
+Purpose
+Take given values that create and image and adjust them to modify the image in some way
+Functions:
+main()
+
+
+crop()
+
+
+clearMoves()
+
+
+dim()
+
+
+brighten()
+
+
+rotate()
+
+
+pickFile()
