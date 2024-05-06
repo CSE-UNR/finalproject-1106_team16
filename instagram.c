@@ -12,19 +12,21 @@
 void mainMenu ();
 void loadImage();
 void editMenu();
-void saveFile();
-void readFile();
+void readFile(fileName, int numCol, int numRow, int picArray[MAX_ROW][MAX_COL]);
+void displayImage();
+void endProgram();
+void cropImage();
+void dimImage();
+void brightenImage();
+void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int numCol);
 //ConvertChar();
 //ConvertInt();
-//Crop();
-//Dim();
-//Bright();
 //Rotate();
 
 int main (){
 
 //Variables 
-int userNum = 0;
+int userNum = 0, userEdit = 0;
 int fileLoad = 0;
 int numRow = 0;
 int numCol = 0;
@@ -39,7 +41,7 @@ scanf("%d", &userNum);
 
 switch(userNum)
 {
-//Load File
+//Read File
 	case 1:
 		printf("What is the name of the image file?: ");
 		scanf("%s", fileName);
@@ -67,6 +69,27 @@ switch(userNum)
 		}
 		else{
 			editMenu();
+			scanf("%d", &userEdit);
+// Beginning of edit switch		
+				switch (userEdit){
+					//Crop
+					case 1:
+						cropImage();
+					//Dim
+					case 2:
+						dimImage();
+					//Brighten
+					case 3:
+						brightenImage();
+					//Main Menu
+					case 0:
+						mainMenu();
+					
+			
+			
+			
+//End of edit switch			
+			}	
 		}
 		break;
 //Exit
@@ -95,15 +118,6 @@ void mainMenu (){
 	printf("\nChoose from one of the options above: ");
 }
 
-	//EDIT MENU
-void editMenu(){
-	printf("**EDITING**\n");
-	printf("1: Crop image\n");
-	printf("2: Dim image\n");
-	printf("3: Brighten image\n");
-	printf("0: Return to main menu\n");
-	printf("\nChoose from one of the options above: ");
-}
 
 	//READ FILE
 	//Having issues with this function, line 111 declarations 
@@ -129,6 +143,63 @@ void readFile(fileName, int numCol, int numRow, int picArray[MAX_ROW][MAX_COL]){
 }
 
 
+
+
+
+
+
+
+	//Display Image
+	
+void displayImage(){
+
+
+
+
+}
+
+
+
+	//EDIT MENU
+void editMenu(){
+	printf("**EDITING**\n");
+	printf("1: Crop image\n");
+	printf("2: Dim image\n");
+	printf("3: Brighten image\n");
+	printf("0: Return to main menu\n");
+	printf("\nChoose from one of the options above: ");
+}
+
+	//Exit Function
+void endProgram(){
+
+
+}	
+
+	//Crop Image
+void cropImage(){
+
+
+
+}	
+
+	//Dim Image
+void dimImage(){
+
+
+
+}
+	
+	//Brighten Image
+void brightenImage(){
+
+
+
+}
+
+
+
+
 	//SAVE FILE
 	
 void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int numCol){
@@ -147,6 +218,7 @@ void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int
 		fprintf(Savefp, "\n");
 	}
 }
+
 
 
 
