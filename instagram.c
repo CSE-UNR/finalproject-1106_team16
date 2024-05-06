@@ -28,10 +28,10 @@ int userNum = 0;
 int fileLoad = 0;
 int numRow = 0;
 int numCol = 0;
-int picArray[100][100];
+int picArray[MAX_ROW][MAX_COL];
 char fileName[30];
 
-FILE *picFile, fp;
+FILE *picFile;
 
 mainMenu();
 
@@ -108,7 +108,7 @@ void editMenu(){
 	//READ FILE
 	//Having issues with this function, line 111 declarations 
 	
-void readFile(fileName, int numCol, int numRow, int picArray[][]){
+void readFile(fileName, int numCol, int numRow, int picArray[MAX_ROW][MAX_COL]){
 	
 	FILE *fp;
 	fp = fopen(*fileName, "r");
