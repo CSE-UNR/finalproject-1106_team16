@@ -22,18 +22,18 @@
 	int numCol = 0;
 	int picArray[MAX_ROW][MAX_COL];
 	char fileName[30];
+	char conArray[100][100];
 	FILE *fp;
 
 void mainMenu ();
-void loadImage();
 void editMenu();
 void readFile();
 void readFile();
 void displayImage();
-void endProgram();
 void cropImage();
 void dimImage();
 void brightenImage();
+void convert();
 void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int numCol);
 //ConvertChar();
 //ConvertInt();
@@ -218,6 +218,8 @@ void editMenu(){
 	printf("\nChoose from one of the options above: ");
 }
 
+
+
 	//Exit Function
 void endProgram(){
 
@@ -271,7 +273,32 @@ void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int
 
 void convert(){
 
+for (i = 0; i < arrayH; i++) {
+			for (j = 0; j < arrayW; j++) {
+				
+				switch(array[i][j]){
+					case '0':
+						conArray[i][j] = ' ';
+					case '1':
+						conArray[i][j] = '.';
+					case '2':
+						conArray[i][j] = 'o';
+					case '3':
+						conArray[i][j] = 'O';
+					case '4':
+						conArray[i][j] = '0';
+				}
+				
+				
+				
+				
+				
+				
+			}
+			printf("\n");
+		}
 
+		
 
 
 
