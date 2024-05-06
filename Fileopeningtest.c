@@ -25,7 +25,8 @@ int main() {
 				i++;
 			}
 			else {
-				array[i][j++] = k;
+				array[i][j] = k;
+				j++;
 			}
 		}
 
