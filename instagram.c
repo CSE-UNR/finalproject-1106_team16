@@ -8,10 +8,20 @@
 
 #define MAX_ROW 100
 #define MAX_COL 100
-
-char array[100][100];
+	
+	
+	
+	//Global Variables
+	
+	int fileLoad = 0;
+	char array[100][100];
 	int i = 0, j = 0, arrayW = 0, arrayH = 0;
 	char k = 0;
+	int userNum = 0, userEdit = 0;
+	int numRow = 0;
+	int numCol = 0;
+	int picArray[MAX_ROW][MAX_COL];
+	char fileName[30];
 	FILE *fp;
 
 void mainMenu ();
@@ -32,25 +42,20 @@ void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int
 int main (){
 
 //Variables 
-int userNum = 0, userEdit = 0;
-int fileLoad = 0;
-int numRow = 0;
-int numCol = 0;
-int picArray[MAX_ROW][MAX_COL];
-char fileName[30];
+
 
 FILE *picFile;
-
+do{
 mainMenu();
-
 scanf("%d", &userNum);
+
+
 
 switch(userNum)
 {
 //Read File
 	case 1:
 	readFile();
-	mainMenu();	
 		
 		break;
 //Display Image
@@ -59,7 +64,8 @@ switch(userNum)
 		printf("Sorry, no image to display");
 		}
 		else{
-		//displayimage function
+		displayImage();
+		//displayImage();
 		}
 		break;
 //Edit
@@ -95,11 +101,12 @@ switch(userNum)
 		break;
 //Exit
 	case 0:
-		printf("Goodbye!");
+		printf("Goodbye!\n\n");
 		
 		return 0;
 		
 }
+}while (userNum != 0);
 
 
 
@@ -111,12 +118,14 @@ return 0;
 
 	//FIRST MENU
 void mainMenu (){
+	printf("\n"); 
 	printf("**ERINSTAGRAM**\n");
 	printf("1: Load image\n");
 	printf("2: Display image\n");
 	printf("3: Edit image\n");
 	printf("0: Exit\n");
 	printf("\nChoose from one of the options above: ");
+	
 }
 
 
@@ -126,13 +135,15 @@ void mainMenu (){
 void readFile(){
 	FILE *fp;
 
-	fp = fopen("test_imageV2.txt", "r");
+	fp = fopen("test_image.txt", "r");
+	printf("\n");
 
 	if (fp == NULL) {
 		printf("Error opening file!\n");
 	} 
 	else {
 		printf("File opened successfully!\n");
+		fileLoad = 1;
 
 		while (fscanf(fp, "%c", &k) == 1) {
 			if (k == '\n') {
@@ -182,6 +193,7 @@ void readFile(){
 	//Display Image
 	
 void displayImage(){
+printf("\n");
 
 for (i = 0; i < arrayH; i++) {
 			for (j = 0; j < arrayW; j++) {
@@ -243,7 +255,7 @@ void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int
 	if(Savefp == NULL){
 		printf("Error opening file!\n");
 		
-		return;
+		
 	}
 	fprintf(Savefp, "%d %d", numRow, numCol);
 	
@@ -253,6 +265,16 @@ void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int
 		}
 		fprintf(Savefp, "\n");
 	}
+}
+
+//Convert Function
+
+void convert(){
+
+
+
+
+
 }
 
 
