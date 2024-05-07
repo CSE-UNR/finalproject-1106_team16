@@ -21,22 +21,32 @@
 	int numRow = 0;
 	int numCol = 0;
 	int picArray[MAX_ROW][MAX_COL];
-	char fileName[30];
-	char conArray[100][100];
+	
+	char conArray[MAX_ROW][MAX_COL];
 	FILE *fp;
 
 void mainMenu ();
+
 void editMenu();
+
 void readFile();
+
 void readFile();
+
 void displayImage();
+
 void cropImage();
+
 void dimImage();
+
 void brightenImage();
+
 void convert();
+
+void convertNum();
+
 void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int numCol);
-//ConvertChar();
-//ConvertInt();
+
 //Rotate();
 
 int main (){
@@ -64,8 +74,11 @@ switch(userNum)
 		printf("Sorry, no image to display");
 		}
 		else{
+		convert(array);
+		
+		
 		displayImage();
-		//displayImage();
+		
 		}
 		break;
 //Edit
@@ -108,15 +121,13 @@ switch(userNum)
 }
 }while (userNum != 0);
 
-
-
-
-
-
 return 0;
 }
 
+
+
 	//FIRST MENU
+	
 void mainMenu (){
 	printf("\n"); 
 	printf("**ERINSTAGRAM**\n");
@@ -129,11 +140,14 @@ void mainMenu (){
 }
 
 
-	//READ FILE
-	//Having issues with this function, line 111 declarations 
+	//READ FILE 
 	
 void readFile(){
 	FILE *fp;
+	
+	
+	//printf();
+	//fgets();
 
 	fp = fopen("test_image.txt", "r");
 	printf("\n");
@@ -165,47 +179,8 @@ void readFile(){
 		fclose(fp);
 		
 	}
-	/*FILE *fp;
-	fp = fopen(*fileName, "r");
 	
-	if(fp == NULL){
-		printf("Error opening file!\n");
-		return;
-	}
-	
-	fscanf(fp, "%d %d", numRow, numCol); 
-	
-	for(int i = 0; i < *numCol; i++){
-		for(int j = 0; j < *numCol){
-			fscanf(fp, "%d", &picArray[i][j]);
-			}
-		}
-	fclose(fp);*/
 }
-
-
-
-
-
-
-
-
-	//Display Image
-	
-void displayImage(){
-printf("\n");
-
-for (i = 0; i < arrayH; i++) {
-			for (j = 0; j < arrayW; j++) {
-				printf("%c", array[i][j]);
-			}
-			printf("\n");
-		}
-
-		printf("Array width is: %d\n", arrayW - 1);
-		printf("Array height is: %d\n", arrayH);
-}
-
 
 
 	//EDIT MENU
@@ -269,12 +244,15 @@ void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int
 	}
 }
 
-//Convert Function
 
-void convert(){
 
-for (i = 0; i < arrayH; i++) {
-			for (j = 0; j < arrayW; j++) {
+
+	//Convert Function to display in terminal
+
+void convert(int arrayPic){
+
+for (i = 0; i < MAX_ROW; i++) {
+			for (j = 0; j < MAX_COL; j++) {
 				
 				switch(array[i][j]){
 					case '0':
@@ -288,23 +266,81 @@ for (i = 0; i < arrayH; i++) {
 					case '4':
 						conArray[i][j] = '0';
 				}
+			}
+			printf("\n");
+		
+		}
+		
+		
+}
+
+	//Convert pic for saving
+
+void convertNum(){
+
+for (i = 0; i < arrayH; i++) {
+			for (j = 0; j < arrayW; j++) {
 				
-				
-				
-				
-				
-				
+				switch(array[i][j]){
+					case ' ':
+						conArray[i][j] = '0';
+					case '.':
+						conArray[i][j] = '1';
+					case 'o':
+						conArray[i][j] = '2';
+					case 'O':
+						conArray[i][j] = '3';
+					case '0':
+						conArray[i][j] = '4';
+				}	
+			}
+			printf("\n");
+		}
+}
+
+	
+	
+	
+		//Display Image
+	
+void displayImage(){
+//printf("\n");
+
+//int convert(int arrayH, int arrayW);
+
+for (i = 0; i < arrayH; i++) {
+			for (j = 0; j < arrayW; j++) {
+				printf("%c", array[i][j]);
 			}
 			printf("\n");
 		}
 
-		
-
-
-
+		printf("Array width is: %d\n", arrayW - 1);
+		printf("Array height is: %d\n", arrayH);
 }
 
 
+
+
+	
+	//EXTRA
+
+/*FILE *fp;
+	fp = fopen(*fileName, "r");
+	
+	if(fp == NULL){
+		printf("Error opening file!\n");
+		return;
+	}
+	
+	fscanf(fp, "%d %d", numRow, numCol); 
+	
+	for(int i = 0; i < *numCol; i++){
+		for(int j = 0; j < *numCol){
+			fscanf(fp, "%d", &picArray[i][j]);
+			}
+		}
+	fclose(fp);*/
 
 
 
