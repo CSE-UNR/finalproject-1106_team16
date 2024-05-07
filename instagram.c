@@ -21,6 +21,7 @@
 	int numRow = 0;
 	int numCol = 0;
 	int picArray[MAX_ROW][MAX_COL];
+	char fileName[50];
 	
 	char conArray[MAX_ROW][MAX_COL];
 	FILE *fp;
@@ -41,7 +42,7 @@ void dimImage();
 
 void brightenImage();
 
-void convert();
+void convert(char conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]);
 
 void convertNum();
 
@@ -74,7 +75,7 @@ switch(userNum)
 		printf("Sorry, no image to display");
 		}
 		else{
-		convert(array);
+		convert(conArray, array);
 		
 		
 		displayImage();
@@ -146,10 +147,10 @@ void readFile(){
 	FILE *fp;
 	
 	
-	//printf();
-	//fgets();
-
-	fp = fopen("test_image.txt", "r");
+	printf("Enter the file name: ");
+	scanf(" %s", fileName);
+	
+	fp = fopen(fileName, "r");
 	printf("\n");
 
 	if (fp == NULL) {
@@ -249,30 +250,32 @@ void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int
 
 	//Convert Function to display in terminal
 
-void convert(int arrayPic){
+void convert(char conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]) {
+    int i, j;
 
-for (i = 0; i < MAX_ROW; i++) {
-			for (j = 0; j < MAX_COL; j++) {
-				
-				switch(array[i][j]){
-					case '0':
-						conArray[i][j] = ' ';
-					case '1':
-						conArray[i][j] = '.';
-					case '2':
-						conArray[i][j] = 'o';
-					case '3':
-						conArray[i][j] = 'O';
-					case '4':
-						conArray[i][j] = '0';
-				}
-			}
-			printf("\n");
-		
-		}
-		
-		
+    for (i = 0; i < MAX_ROW; i++) {
+        for (j = 0; j < MAX_COL; j++) {
+            switch(array[i][j]) {
+                case '0':
+                    conArray[i][j] = ' ';
+                    break;
+                case '1':
+                    conArray[i][j] = '.';
+                    break;
+                case '2':
+                    conArray[i][j] = 'o';
+                    break;
+                case '3':
+                    conArray[i][j] = 'O';
+                    break;
+                case '4':
+                    conArray[i][j] = '0';
+                    break;
+            }
+        }
+    }
 }
+
 
 	//Convert pic for saving
 
@@ -310,7 +313,7 @@ void displayImage(){
 
 for (i = 0; i < arrayH; i++) {
 			for (j = 0; j < arrayW; j++) {
-				printf("%c", array[i][j]);
+				printf("%c", conArray[i][j]);
 			}
 			printf("\n");
 		}
