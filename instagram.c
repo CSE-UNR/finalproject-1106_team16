@@ -38,9 +38,9 @@ void displayImage();
 
 void cropImage();
 
-void dimImage();
+void dimImage(int array[MAX_ROW][MAX_COL]);
 
-void brightenImage();
+void brightenImage(int array[MAX_ROW][MAX_COL]);
 
 void convert(char conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]);
 
@@ -98,10 +98,20 @@ switch(userNum)
 						cropImage();
 					//Dim
 					case 2:
-						dimImage();
+						dimImage(array);
+						
+						convert(conArray, array);
+						
+						displayImage();
+					
 					//Brighten
 					case 3:
-						brightenImage();
+						brightenImage(array);
+						
+						convert(conArray, array);
+						
+						displayImage();
+						
 					//Main Menu
 					case 0:
 						mainMenu();
@@ -210,18 +220,37 @@ void cropImage(){
 }	
 
 	//Dim Image
-void dimImage(){
 
+
+void dimImage(int array[MAX_ROW][MAX_COL]){
+	int i, j, row, col;
+	
+	for(i = 0; i < row; i++){
+		for(j = 0; j < col; i++){
+			array[i][j] -= 1;
+		}
+	
+	}
 
 
 }
+
+
 	
 	//Brighten Image
-void brightenImage(){
-
+void brightenImage(int array[MAX_ROW][MAX_COL]){
+	int i, j, row, col;
+	
+	for(i = 0; i < row; i++){
+		for(j = 0; j < col; i++){
+			array[i][j] += 1;
+		}
+	
+	}
 
 
 }
+
 
 
 
