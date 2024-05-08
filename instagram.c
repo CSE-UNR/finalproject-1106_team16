@@ -57,7 +57,7 @@ int main (){
 FILE *picFile;
 do{
 mainMenu();
-scanf("%d", &userNum);
+
 
 
 
@@ -89,12 +89,16 @@ switch(userNum)
 		}
 		else{
 			editMenu();
-			scanf("%d", &userEdit);
+			
 // Beginning of edit switch		
 				switch (userEdit){
 					//Crop
 					case 1:
 						cropImage();
+						
+						mainMenu();
+						
+						break;
 					//Dim
 					case 2:
 						dimImage(array);
@@ -102,6 +106,10 @@ switch(userNum)
 						convert(conArray, array);
 						
 						displayImage();
+						
+						mainMenu();
+						
+						break;
 					
 					//Brighten
 					case 3:
@@ -111,9 +119,15 @@ switch(userNum)
 						
 						displayImage();
 						
+						mainMenu();
+						
+						break;
+						
 					//Main Menu
 					case 0:
 						mainMenu();
+						
+						break;
 					
 			
 			
@@ -146,6 +160,7 @@ void mainMenu (){
 	printf("3: Edit image\n");
 	printf("0: Exit\n");
 	printf("\nChoose from one of the options above: ");
+	scanf("%d", &userNum);
 	
 }
 
@@ -201,6 +216,7 @@ void editMenu(){
 	printf("3: Brighten image\n");
 	printf("0: Return to main menu\n");
 	printf("\nChoose from one of the options above: ");
+	scanf("%d", &userEdit);
 }
 
 
@@ -224,8 +240,8 @@ void cropImage(){
 void dimImage(char array[MAX_ROW][MAX_COL]){
 	int i, j;
 	
-	for(i = 0; i < arrayW; i++){
-		for(j = 0; j < arrayH; j++){
+	for(j = 0; j < arrayW; j++){
+		for(i = 0; i < arrayH; i++){
 			if(array[i][j] > '0'){
 			array[i][j] = array[i][j] - 1;
 			}
@@ -242,16 +258,13 @@ void dimImage(char array[MAX_ROW][MAX_COL]){
 void brightenImage(char array[MAX_ROW][MAX_COL]){
 	int i, j;
 	
-	for(i = 0; i < arrayW; i++){
-		for(j = 0; j < arrayH; j++){
+	for(j = 0; j < arrayW; j++){
+		for(i = 0; i < arrayH; i++){
 			if(array[i][j] < '4'){
 			array[i][j] = array[i][j] + 1;
 			}
-		}
-	
+		}	
 	}
-
-
 }
 
 
@@ -349,9 +362,8 @@ for (i = 0; i < arrayH; i++) {
 			}
 			printf("\n");
 		}
-
-		printf("Array width is: %d\n", arrayW - 1);
-		printf("Array height is: %d\n", arrayH);
+	arrayW = arrayW - 1;
+		
 }
 
 
