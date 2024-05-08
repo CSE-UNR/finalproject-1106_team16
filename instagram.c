@@ -20,10 +20,9 @@
 	int userNum = 0, userEdit = 0;
 	int numRow = 0;
 	int numCol = 0;
-	int picArray[MAX_ROW][MAX_COL];
 	char fileName[50];
 	
-	char conArray[MAX_ROW][MAX_COL];
+	int conArray[MAX_ROW][MAX_COL];
 	FILE *fp;
 
 void mainMenu ();
@@ -223,11 +222,11 @@ void cropImage(){
 
 
 void dimImage(char array[MAX_ROW][MAX_COL]){
-	int i, j, row, col;
+	int i, j;
 	
-	for(i = 0; i < row; i++){
-		for(j = 0; j < col; i++){
-			if(array[i][j] > 0){
+	for(i = 0; i < arrayW; i++){
+		for(j = 0; j < arrayH; j++){
+			if(array[i][j] > '0'){
 			array[i][j] = array[i][j] - 1;
 			}
 		}
@@ -241,11 +240,11 @@ void dimImage(char array[MAX_ROW][MAX_COL]){
 	
 	//Brighten Image
 void brightenImage(char array[MAX_ROW][MAX_COL]){
-	int i, j, row, col;
+	int i, j;
 	
-	for(i = 0; i < row; i++){
-		for(j = 0; j < col; i++){
-			if(array[i][j] < 4){
+	for(i = 0; i < arrayW; i++){
+		for(j = 0; j < arrayH; j++){
+			if(array[i][j] < '4'){
 			array[i][j] = array[i][j] + 1;
 			}
 		}
