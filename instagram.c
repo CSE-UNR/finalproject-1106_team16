@@ -38,11 +38,11 @@ void displayImage();
 
 void cropImage();
 
-void dimImage(int array[MAX_ROW][MAX_COL]);
+void dimImage(char array[MAX_ROW][MAX_COL]);
 
-void brightenImage(int array[MAX_ROW][MAX_COL]);
+void brightenImage(char array[MAX_ROW][MAX_COL]);
 
-void convert(char conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]);
+void convert(int conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]);
 
 void convertNum();
 
@@ -222,12 +222,14 @@ void cropImage(){
 	//Dim Image
 
 
-void dimImage(int array[MAX_ROW][MAX_COL]){
+void dimImage(char array[MAX_ROW][MAX_COL]){
 	int i, j, row, col;
 	
 	for(i = 0; i < row; i++){
 		for(j = 0; j < col; i++){
-			array[i][j] -= 1;
+			if(array[i][j] > 0){
+			array[i][j] = array[i][j] - 1;
+			}
 		}
 	
 	}
@@ -238,12 +240,14 @@ void dimImage(int array[MAX_ROW][MAX_COL]){
 
 	
 	//Brighten Image
-void brightenImage(int array[MAX_ROW][MAX_COL]){
+void brightenImage(char array[MAX_ROW][MAX_COL]){
 	int i, j, row, col;
 	
 	for(i = 0; i < row; i++){
 		for(j = 0; j < col; i++){
-			array[i][j] += 1;
+			if(array[i][j] < 4){
+			array[i][j] = array[i][j] + 1;
+			}
 		}
 	
 	}
@@ -279,7 +283,7 @@ void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int
 
 	//Convert Function to display in terminal
 
-void convert(char conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]) {
+void convert(int conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]) {
     int i, j;
 
     for (i = 0; i < MAX_ROW; i++) {
