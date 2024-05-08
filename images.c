@@ -20,10 +20,11 @@
 	int userNum = 0, userEdit = 0;
 	int numRow = 0;
 	int numCol = 0;
-	char fileName[50];
+	char fileName[50], fileName2[50];
 	
 	int conArray[MAX_ROW][MAX_COL];
 	FILE *fp;
+	FILE *fp2;
 
 void mainMenu ();
 
@@ -45,7 +46,7 @@ void convert(int conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]);
 
 void convertNum();
 
-void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int numCol);
+void saveFile();
 
 //Rotate();
 
@@ -98,6 +99,8 @@ switch(userNum)
 						
 						mainMenu();
 						
+						saveFile();
+						
 						break;
 					//Dim
 					case 2:
@@ -106,6 +109,8 @@ switch(userNum)
 						convert(conArray, array);
 						
 						displayImage();
+						
+						saveFile();
 						
 						mainMenu();
 						
@@ -118,6 +123,8 @@ switch(userNum)
 						convert(conArray, array);
 						
 						displayImage();
+						
+						saveFile();
 						
 						mainMenu();
 						
@@ -207,6 +214,32 @@ void readFile(){
 	
 }
 
+void saveFile(){
+
+	
+
+	FILE *fp2 ;
+	printf("Enter the name of the file you would like to save to: ");
+	scanf(" %s", fileName2);
+	
+	fp2 = fopen(fileName2, "w");
+	if(fileName2 == NULL){
+		printf("Error opening file!\n");
+		
+		
+	}
+	
+	for(i = 0; i < arrayH; i++){
+		for(j = 0; j < arrayW; j++){
+			fprintf(fp2, "%c", conArray[i][j]);
+			}
+			fprintf(fp2,"\n");
+		}
+	
+		fclose(fp2);
+	}
+
+
 
 	//EDIT MENU
 void editMenu(){
@@ -269,30 +302,6 @@ void brightenImage(char array[MAX_ROW][MAX_COL]){
 
 
 
-
-
-	//SAVE FILE
-	
-void saveFile(const char *fileName, int array[MAX_ROW][MAX_COL], int numRow, int numCol){
-	FILE *Savefp = fopen(fileName, "w");
-	if(Savefp == NULL){
-		printf("Error opening file!\n");
-		
-		
-	}
-	fprintf(Savefp, "%d %d", numRow, numCol);
-	
-	for(int i = 0; i < numRow; i++){
-		for(int j = 0; j < numCol; j++){
-			fprintf(Savefp, "%d", array[i][j]);
-		}
-		fprintf(Savefp, "\n");
-	}
-}
-
-
-
-
 	//Convert Function to display in terminal
 
 void convert(int conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]) {
@@ -326,8 +335,8 @@ void convert(int conArray[MAX_ROW][MAX_COL], char array[MAX_ROW][MAX_COL]) {
 
 void convertNum(){
 
-for (i = 0; i < arrayH; i++) {
-			for (j = 0; j < arrayW; j++) {
+for(j = 0; j < arrayW; j++){
+		for(i = 0; i < arrayH; i++) {
 				
 				switch(array[i][j]){
 					case ' ':
@@ -368,26 +377,6 @@ for (i = 0; i < arrayH; i++) {
 
 
 
-
-	
-	//EXTRA
-
-/*FILE *fp;
-	fp = fopen(*fileName, "r");
-	
-	if(fp == NULL){
-		printf("Error opening file!\n");
-		return;
-	}
-	
-	fscanf(fp, "%d %d", numRow, numCol); 
-	
-	for(int i = 0; i < *numCol; i++){
-		for(int j = 0; j < *numCol){
-			fscanf(fp, "%d", &picArray[i][j]);
-			}
-		}
-	fclose(fp);*/
 
 
 
